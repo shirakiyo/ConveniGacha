@@ -1,6 +1,8 @@
 package usecase
 
 import (
+	"math/rand"
+
 	"github.com/labstack/echo/v4"
 	"github.com/shirakiyo/FamimaGacha/internal/domain/model"
 	"github.com/shirakiyo/FamimaGacha/internal/domain/repository"
@@ -20,12 +22,13 @@ func NewProductUseCase(pr repository.ProductRepository) ProductUseCase {
 	}
 }
 
+// GetProduct 全商品の中からランダムで商品を選択する
 func (pu *productUseCase) GetProduct(c echo.Context) (*model.Product, error) {
 	products, err := pu.productRepository.ListProducts()
 	if err != nil {
 		return nil, err
 	}
+	index := rand.Int() % len(products)
 
-	//FIXME
-	return products[0], nil
+	return products[index], nil
 }

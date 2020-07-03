@@ -6,7 +6,6 @@ import (
 	"io"
 	"os"
 	"strconv"
-	"strings"
 
 	"github.com/shirakiyo/FamimaGacha/internal/domain/model"
 )
@@ -25,14 +24,20 @@ func NewProductRepository(path string) ProductRepository {
 	}
 }
 
-func (pr *productsFile) ListProducts() ([]*model.Product, error) {
-	result := make([]*model.Product, 0)
+func (pr *productsFile) ListProducts() (result []*model.Product, err error) {
+	result = make([]*model.Product, 0)
 
 	csvFile, err := os.Open(pr.filePath)
 	if err != nil {
 		return nil, err
 	}
-	defer csvFile.Close()
+	defer func() {
+		e := csvFile.Close()
+		if e == nil {
+			return
+		}
+		err = fmt.Errorf("Failed to close: %v, the original error was %v ", e, err)
+	}()
 
 	reader := csv.NewReader(csvFile)
 	var line []string
@@ -49,13 +54,7 @@ func (pr *productsFile) ListProducts() ([]*model.Product, error) {
 			return nil, fmt.Errorf("CSVファイルの%d行目に誤りがあります", i)
 		}
 
-		// "1,000"という数値が来たときの処理
-		if strings.Contains(line[1], ",") {
-			line[1] = strings.Replace(line[1], `"`, "", -1)
-			line[1] = strings.Replace(line[1], ",", "", -1)
-		}
-
-		price, err := strconv.ParseFloat(line[1], 64)
+		price, err := strconv.Atoi(line[1])
 		if err != nil {
 			return nil, fmt.Errorf("CSVファイルの%d行目に誤りがあります: %w", i, err)
 		}

@@ -33,14 +33,14 @@ func Serve(port string) {
 	})
 
 	// 相対パスを絶対パスに変換
-	fp, err := filepath.Abs("./data/product.csv")
+	fp, err := filepath.Abs("./data/products.csv")
 	if err != nil {
 		log.Println(err)
 		os.Exit(1)
 	}
 	repo := repository.NewProductRepository(fp)
-	usecase := usecase.NewProductUseCase(repo)
-	productHandler := handler.NewHandler(usecase)
+	useCase := usecase.NewProductUseCase(repo)
+	productHandler := handler.NewHandler(useCase)
 
 	e.GET("/get", productHandler.GetProduct)
 
