@@ -1,8 +1,6 @@
 package usecase
 
 import (
-	"errors"
-
 	"github.com/labstack/echo/v4"
 	"github.com/shirakiyo/FamimaGacha/internal/domain/model"
 	"github.com/shirakiyo/FamimaGacha/internal/domain/repository"
@@ -23,5 +21,11 @@ func NewProductUseCase(pr repository.ProductRepository) ProductUseCase {
 }
 
 func (pu *productUseCase) GetProduct(c echo.Context) (*model.Product, error) {
-	return nil, errors.New("")
+	products, err := pu.productRepository.ListProducts()
+	if err != nil {
+		return nil, err
+	}
+
+	//FIXME
+	return products[0], nil
 }

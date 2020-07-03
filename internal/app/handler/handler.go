@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"log"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
@@ -22,5 +23,11 @@ func NewHandler(pu usecase.ProductUseCase) ProductHandler {
 }
 
 func (h *productHandler) GetProduct(c echo.Context) error {
-	return c.JSON(http.StatusOK, "hello world!")
+	product, err := h.productUseCase.GetProduct(c)
+	if err != nil {
+		log.Println(err)
+		return c.JSON(http.StatusInternalServerError, "Internal Server Error")
+	}
+
+	return c.JSON(http.StatusOK, product)
 }

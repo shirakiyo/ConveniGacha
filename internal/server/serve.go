@@ -1,7 +1,10 @@
 package server
 
 import (
+	"log"
 	"net/http"
+	"os"
+	"path/filepath"
 
 	"github.com/shirakiyo/FamimaGacha/internal/domain/repository"
 	"github.com/shirakiyo/FamimaGacha/internal/usecase"
@@ -29,7 +32,13 @@ func Serve(port string) {
 		return c.NoContent(http.StatusOK)
 	})
 
-	repo := repository.NewProductRepository("../../data/produce.csv")
+	// 相対パスを絶対パスに変換
+	fp, err := filepath.Abs("./data/product.csv")
+	if err != nil {
+		log.Println(err)
+		os.Exit(1)
+	}
+	repo := repository.NewProductRepository(fp)
 	usecase := usecase.NewProductUseCase(repo)
 	productHandler := handler.NewHandler(usecase)
 

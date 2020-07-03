@@ -2,6 +2,6 @@ package model
 
 type Product struct {
 	Name  string
-	Price int
+	Price float64
 	Link  string
 }
