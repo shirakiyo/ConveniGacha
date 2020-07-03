@@ -1,8 +1,11 @@
 package handler
 
 import (
-	"log"
 	"net/http"
+
+	"github.com/shirakiyo/FamimaGacha/internal/app/output"
+
+	"github.com/shirakiyo/FamimaGacha/internal/app/input"
 
 	"github.com/labstack/echo/v4"
 	"github.com/shirakiyo/FamimaGacha/internal/usecase"
@@ -23,11 +26,19 @@ func NewHandler(pu usecase.ProductUseCase) ProductHandler {
 }
 
 func (h *productHandler) GetProduct(c echo.Context) error {
-	product, err := h.productUseCase.GetProduct(c)
-	if err != nil {
-		log.Println(err)
-		return c.JSON(http.StatusInternalServerError, "Internal Server Error")
+	var param input.GetProduct
+	if err := c.Bind(&param); err != nil {
+		return APIResponseError(c, http.StatusBadRequest, "Bad Request", err)
 	}
 
-	return c.JSON(http.StatusOK, product)
+	product, err := h.productUseCase.GetProduct(usecase.ProductCategory(param.Category))
+	if err != nil {
+		return APIResponseError(c, http.StatusInternalServerError, "Internal Server Error", err)
+	}
+
+	return APIResponseOK(c, output.Product{
+		Name:  product.Name,
+		Price: product.Price,
+		Link:  product.Link,
+	})
 }

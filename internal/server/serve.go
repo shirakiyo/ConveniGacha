@@ -33,7 +33,7 @@ func Serve(port string) {
 	})
 
 	// 相対パスを絶対パスに変換
-	fp, err := filepath.Abs("./data/products.csv")
+	fp, err := filepath.Abs("./data")
 	if err != nil {
 		log.Println(err)
 		os.Exit(1)

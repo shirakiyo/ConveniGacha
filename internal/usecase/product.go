@@ -1,15 +1,27 @@
 package usecase
 
 import (
+	"fmt"
 	"math/rand"
 
-	"github.com/labstack/echo/v4"
 	"github.com/shirakiyo/FamimaGacha/internal/domain/model"
 	"github.com/shirakiyo/FamimaGacha/internal/domain/repository"
 )
 
+type ProductCategory string
+
+func (pc ProductCategory) String() string {
+	return string(pc)
+}
+
+const (
+	FoodsPrefix  ProductCategory = "foods"
+	SweetsPrefix ProductCategory = "sweets"
+	SnacksPrefix ProductCategory = "snacks"
+)
+
 type ProductUseCase interface {
-	GetProduct(echo.Context) (*model.Product, error)
+	GetProduct(ProductCategory) (*model.Product, error)
 }
 
 type productUseCase struct {
@@ -23,8 +35,13 @@ func NewProductUseCase(pr repository.ProductRepository) ProductUseCase {
 }
 
 // GetProduct 全商品の中からランダムで商品を選択する
-func (pu *productUseCase) GetProduct(c echo.Context) (*model.Product, error) {
-	products, err := pu.productRepository.ListProducts()
+func (pu *productUseCase) GetProduct(category ProductCategory) (*model.Product, error) {
+	fileName := category.String()
+	if category == "" {
+		fileName = "products"
+	}
+
+	products, err := pu.productRepository.ListProducts(fmt.Sprintf("%s.csv", fileName))
 	if err != nil {
 		return nil, err
 	}

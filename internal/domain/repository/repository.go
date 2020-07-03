@@ -5,13 +5,14 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"path/filepath"
 	"strconv"
 
 	"github.com/shirakiyo/FamimaGacha/internal/domain/model"
 )
 
 type ProductRepository interface {
-	ListProducts() ([]*model.Product, error)
+	ListProducts(string) ([]*model.Product, error)
 }
 
 type productsFile struct {
@@ -24,10 +25,10 @@ func NewProductRepository(path string) ProductRepository {
 	}
 }
 
-func (pr *productsFile) ListProducts() (result []*model.Product, err error) {
+func (pr *productsFile) ListProducts(fileName string) (result []*model.Product, err error) {
 	result = make([]*model.Product, 0)
 
-	csvFile, err := os.Open(pr.filePath)
+	csvFile, err := os.Open(filepath.Join(pr.filePath, fileName))
 	if err != nil {
 		return nil, err
 	}
