@@ -3,11 +3,14 @@
     <div class="d-flex justify-center flex-column ma-auto">
       <v-btn @click="getProduct" color="white" class="pa-8 mb-16 ma-auto gacha__btn">ガチャを回す</v-btn>
       <v-card v-show="products.name" max-width="800px" style="width: 90vw;">
-        <v-card-text class="pa-8">
+        <v-card-text class="pa-8 d-flex justify-around flex-column">
           <h2 align="center" style="color: black;">{{products.name}}</h2>
-          <div class="d-flex justify-space-around">
-            <h3>{{products.price}}円(税込)</h3>
-            <a :href="products.link" target="_blank" ref="noopener" class="d-flex align-center" color="blue" style="text-decoration: none; color: #2196F3;">
+          <div class="ma-auto my-4" style="width:60%;">
+            <img :src="products.imageURL" style="width: 100%;">
+          </div>
+          <div class="d-flex flex-column justify-center">
+            <h3 align="center">{{products.price}}円(税込)</h3>
+            <a :href="products.link" target="_blank" ref="noopener" class="d-flex align-center justify-center mt-4" color="blue" style="text-decoration: none; color: #2196F3;">
               サイトでチェック
               <v-icon color="blue">mdi-open-in-new</v-icon>
             </a>
@@ -29,6 +32,7 @@ export default {
     },
     methods: {
       getProduct() {
+        this.products = ""
         axios.get(
           process.env.NUXT_ENV_API_ENDPOINT + "/get"
         )
@@ -39,7 +43,7 @@ export default {
           console.log(err)
         })
       }
-    }
+    },
 }
 </script>
 

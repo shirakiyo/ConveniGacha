@@ -4,7 +4,7 @@
       <v-container>
         <h1 style="color: white; text-align: center; margin-top: 2rem;margin-bottom: 4rem;">
             あなたと、コンビニ、<br>
-            FamiliMart Gacha
+            ファミマガチャ
         </h1>
         <nuxt />
       </v-container>

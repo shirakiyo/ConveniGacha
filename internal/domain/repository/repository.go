@@ -51,7 +51,7 @@ func (pr *productsFile) ListProducts(fileName string) (result []*model.Product, 
 			}
 			return nil, err
 		}
-		if len(line) != 3 {
+		if len(line) != 4 {
 			return nil, fmt.Errorf("CSVファイルの%d行目に誤りがあります", i)
 		}
 
@@ -61,9 +61,10 @@ func (pr *productsFile) ListProducts(fileName string) (result []*model.Product, 
 		}
 
 		content := &model.Product{
-			Name:  line[0],
-			Price: price,
-			Link:  line[2],
+			Name:     line[0],
+			Price:    price,
+			Link:     line[2],
+			ImageURL: line[3],
 		}
 
 		result = append(result, content)
