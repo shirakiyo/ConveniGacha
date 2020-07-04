@@ -57,6 +57,11 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
   ],
+  webfontloader: {
+    google: {
+      families: ["Noto+Sans+JP"]
+    }
+  },
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
