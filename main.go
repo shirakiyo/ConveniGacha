@@ -5,7 +5,7 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/shirakiyo/FamimaGacha/internal/server"
+	"github.com/shirakiyo/ConveniGacha/internal/server"
 )
 
 var (

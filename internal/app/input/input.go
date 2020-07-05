@@ -3,7 +3,7 @@ package input
 import (
 	"errors"
 
-	"github.com/shirakiyo/FamimaGacha/internal/usecase"
+	"github.com/shirakiyo/ConveniGacha/internal/usecase"
 )
 
 type GetProduct struct {

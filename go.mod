@@ -1,4 +1,4 @@
-module github.com/shirakiyo/FamimaGacha
+module github.com/shirakiyo/ConveniGacha
 
 go 1.14
 

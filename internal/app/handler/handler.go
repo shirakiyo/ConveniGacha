@@ -3,12 +3,12 @@ package handler
 import (
 	"net/http"
 
-	"github.com/shirakiyo/FamimaGacha/internal/app/output"
+	"github.com/shirakiyo/ConveniGacha/internal/app/output"
 
-	"github.com/shirakiyo/FamimaGacha/internal/app/input"
+	"github.com/shirakiyo/ConveniGacha/internal/app/input"
 
 	"github.com/labstack/echo/v4"
-	"github.com/shirakiyo/FamimaGacha/internal/usecase"
+	"github.com/shirakiyo/ConveniGacha/internal/usecase"
 )
 
 type ProductHandler interface {

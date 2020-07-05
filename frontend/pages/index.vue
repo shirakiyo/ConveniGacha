@@ -78,7 +78,7 @@ export default {
         )
         .then(res => {
           this.product = res.data
-          this.productHistory.push(res.data)
+          this.productHistory.unshift(res.data)
           this.totalPrice += res.data.price
         })
         .catch(err => {

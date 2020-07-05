@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"math/rand"
 
-	"github.com/shirakiyo/FamimaGacha/internal/domain/model"
-	"github.com/shirakiyo/FamimaGacha/internal/domain/repository"
+	"github.com/shirakiyo/ConveniGacha/internal/domain/model"
+	"github.com/shirakiyo/ConveniGacha/internal/domain/repository"
 )
 
 type ProductCategory string

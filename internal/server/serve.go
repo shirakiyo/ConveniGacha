@@ -6,10 +6,10 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/shirakiyo/FamimaGacha/internal/domain/repository"
-	"github.com/shirakiyo/FamimaGacha/internal/usecase"
+	"github.com/shirakiyo/ConveniGacha/internal/domain/repository"
+	"github.com/shirakiyo/ConveniGacha/internal/usecase"
 
-	"github.com/shirakiyo/FamimaGacha/internal/app/handler"
+	"github.com/shirakiyo/ConveniGacha/internal/app/handler"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
