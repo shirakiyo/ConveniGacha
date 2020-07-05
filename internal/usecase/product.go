@@ -1,7 +1,6 @@
 package usecase
 
 import (
-	"fmt"
 	"math/rand"
 
 	"github.com/shirakiyo/ConveniGacha/internal/domain/model"
@@ -18,6 +17,11 @@ const (
 	FoodsPrefix  ProductCategory = "foods"
 	SweetsPrefix ProductCategory = "sweets"
 	SnacksPrefix ProductCategory = "snacks"
+
+	FamimaProductsCSV = "famima_products.csv"
+	FamimaFoodsCSV    = "famima_foods.csv"
+	FamimaSweetsCSV   = "famima_sweets.csv"
+	FamimaSnacksCSV   = "famima_snacks.csv"
 )
 
 type ProductUseCase interface {
@@ -37,11 +41,18 @@ func NewProductUseCase(pr repository.ProductRepository) ProductUseCase {
 // GetProduct 全商品の中からランダムで商品を選択する
 func (pu *productUseCase) GetProduct(category ProductCategory) (*model.Product, error) {
 	fileName := category.String()
-	if category == "" {
-		fileName = "products"
+	switch category {
+	case "":
+		fileName = FamimaProductsCSV
+	case FoodsPrefix:
+		fileName = FamimaFoodsCSV
+	case SweetsPrefix:
+		fileName = FamimaSweetsCSV
+	case SnacksPrefix:
+		fileName = FamimaSnacksCSV
 	}
 
-	products, err := pu.productRepository.ListProducts(fmt.Sprintf("%s.csv", fileName))
+	products, err := pu.productRepository.ListProducts(fileName)
 	if err != nil {
 		return nil, err
 	}

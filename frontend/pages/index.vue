@@ -69,7 +69,7 @@ export default {
     methods: {
       getProduct() {
         axios.get(
-          process.env.NUXT_ENV_API_ENDPOINT + "/get",
+          process.env.NUXT_ENV_API_ENDPOINT + "/familyMart/get",
           {
             params: {
               category: this.category

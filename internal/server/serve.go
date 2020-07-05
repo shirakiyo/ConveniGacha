@@ -42,7 +42,7 @@ func Serve(port string) {
 	useCase := usecase.NewProductUseCase(repo)
 	productHandler := handler.NewHandler(useCase)
 
-	e.GET("/get", productHandler.GetProduct)
+	e.GET("/familyMart/get", productHandler.GetProduct)
 
 	e.Logger.Fatal(e.Start(port))
 }
