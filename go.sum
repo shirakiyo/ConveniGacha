@@ -19,8 +19,8 @@ github.com/mattn/go-isatty v0.0.12 h1:wuysRhFDzyxgEmMf5xjvJ2M9dZoWAXNNr5LSBS7uHX
 github.com/mattn/go-isatty v0.0.12/go.mod h1:cbi8OIDigv2wuxKPP5vlRcQ1OAZbq2CE4Kysco4FUpU=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
-github.com/shirakiyo/ConveniScraping v0.0.0-20200705060702-7a2afd7bf96d h1:4pUl/ugpX06lO9UIxnQ6Za0l7VDFFM0Ipwqzucg3xPA=
-github.com/shirakiyo/ConveniScraping v0.0.0-20200705060702-7a2afd7bf96d/go.mod h1:7bR2pQAXuGzKWZ47GhPqnJDSFwR5P/VUK30agA/sSws=
+github.com/shirakiyo/ConveniScraping v0.1.0 h1:sOJuVXEZ67Gzu6csCZY4gDiPPiFVRjDo6PjK06vLzoc=
+github.com/shirakiyo/ConveniScraping v0.1.0/go.mod h1:7bR2pQAXuGzKWZ47GhPqnJDSFwR5P/VUK30agA/sSws=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/testify v1.4.0 h1:2E4SXV/wtOkTonXsotYi4li6zVWxYlZuYNCXe9XRJyk=
 github.com/stretchr/testify v1.4.0/go.mod h1:j7eGeouHqKxXV5pUuKE4zz7dFj8WfuZ+81PSLYec5m4=

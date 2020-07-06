@@ -1,8 +1,8 @@
 package model
 
 type Product struct {
-	Name     string
-	Price    int
-	Link     string
-	ImageURL string
+	Name   string
+	Price  int
+	Link   string
+	Detail string
 }

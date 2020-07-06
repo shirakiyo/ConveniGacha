@@ -12,9 +12,7 @@
         <v-card-text class="pa-8 d-flex justify-around flex-column">
           <h2 align="center" style="font-size: 1.2rem; color: black;">{{product.name}}</h2>
           <span class="mt-2" style="max-width: 600px; width: 100%; margin: 0 auto; height: 5px; background: #2EAB4F"></span>
-          <div class="ma-auto my-4" style="width:60%;">
-            <img :src="product.imageURL" style="width: 100%;">
-          </div>
+          <p class="mt-4">{{product.detail}}</p>
           <div class="d-flex flex-column justify-center">
             <h3 align="center">{{product.price}}円(税込)</h3>
             <a :href="product.link" target="_blank" ref="noopener" class="d-flex align-center justify-center mt-4" color="blue" style="text-decoration: none; color: #2196F3;">

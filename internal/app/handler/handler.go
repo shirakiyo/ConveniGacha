@@ -37,9 +37,9 @@ func (h *productHandler) GetProduct(c echo.Context) error {
 	}
 
 	return APIResponseOK(c, output.Product{
-		Name:     product.Name,
-		Price:    product.Price,
-		Link:     product.Link,
-		ImageURL: product.ImageURL,
+		Name:   product.Name,
+		Price:  product.Price,
+		Link:   product.Link,
+		Detail: product.Detail,
 	})
 }

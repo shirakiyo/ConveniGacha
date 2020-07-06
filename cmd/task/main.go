@@ -20,8 +20,12 @@ func main() {
 		os.Exit(1)
 	}
 
-	famimaSvc.Products(filepath.Join(dataPath, usecase.FamimaProductsCSV))
-	famimaSvc.Foods(filepath.Join(dataPath, usecase.FamimaFoodsCSV))
 	famimaSvc.Sweets(filepath.Join(dataPath, usecase.FamimaSweetsCSV))
+	log.Println("sweets ok")
 	famimaSvc.Snacks(filepath.Join(dataPath, usecase.FamimaSnacksCSV))
+	log.Println("snacks ok")
+	famimaSvc.Foods(filepath.Join(dataPath, usecase.FamimaFoodsCSV))
+	log.Println("foods ok")
+	famimaSvc.Products(filepath.Join(dataPath, usecase.FamimaProductsCSV))
+	log.Println("products ok")
 }

@@ -61,10 +61,10 @@ func (pr *productsFile) ListProducts(fileName string) (result []*model.Product, 
 		}
 
 		content := &model.Product{
-			Name:     line[0],
-			Price:    price,
-			Link:     line[2],
-			ImageURL: line[3],
+			Name:   line[0],
+			Price:  price,
+			Link:   line[2],
+			Detail: line[3],
 		}
 
 		result = append(result, content)
