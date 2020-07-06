@@ -34,9 +34,10 @@
             <v-icon color="white" @click="dialog=false">mdi-close</v-icon>
           </v-card-title>
           <v-card-text class="product__history-items">
-            <v-list v-for="p in productHistory" class="product__history-item" :key="p.name">
+            <v-list v-for="(p, i) in productHistory" class="product__history-item" :key="p.name">
               <a :href="p.link" style="color: gray;" target="_blank" rel="noopener">{{p.name}}</a>
               <span align="center">{{p.price}}円</span>
+              <v-icon color="#ff4b3e" @click="deleteProductFromHistory(i)" style="cursor: pointer;">mdi-delete</v-icon>
             </v-list>
           </v-card-text>
           <v-card-actions class="py-4">
@@ -87,6 +88,10 @@ export default {
         this.totalPrice = 0
         this.productHistory = []
         this.dialog = false
+      },
+      deleteProductFromHistory(i) {
+        this.totalPrice -= this.productHistory[i].price
+        this.productHistory.splice(i, 1)
       }
     },
 }
@@ -99,12 +104,6 @@ export default {
     font-weight: bold;
   }
 
-  .product__history {
-    border-bottom: 2px solid #3995D8;
-    max-height: 60vh;
-    overflow: scroll;
-  }
-
   .product__history-items {
     border-bottom: 2px solid #3995D8;
     max-height: 60vh;
@@ -114,7 +113,8 @@ export default {
 
   .product__history-item {
     display: grid;
-    grid-template-columns: 4fr 1fr;
+    align-items: center;
+    grid-template-columns: 10fr 3fr 1fr;
     border-bottom: 1px dashed #3995D8 !important;
   }
 
