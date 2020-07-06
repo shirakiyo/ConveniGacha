@@ -1,5 +1,5 @@
-![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/shirakiyo/ConveniGacha)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/shirakiyo/ConveniGacha?color=yellow)
+![Build and Test](https://github.com/shirakiyo/ConveniGacha/workflows/Build%20and%20Test/badge.svg)
 
 # 🏪 ConveniGacha
 最初に皆さんに質問です。  
