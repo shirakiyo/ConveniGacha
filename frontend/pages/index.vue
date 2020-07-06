@@ -10,7 +10,7 @@
       <v-btn @click="getProduct" color="#2EAB4F" class="pa-8 mt-6 mb-8 ma-auto gacha__btn" style="color: white;">ガチャを回す</v-btn>
       <v-card v-show="product.name" max-width="800px" style="width: 90vw;">
         <v-card-text class="pa-8 d-flex justify-around flex-column">
-          <h2 align="center" style="color: black;">{{product.name}}</h2>
+          <h2 align="center" style="font-size: 1.2rem; color: black;">{{product.name}}</h2>
           <span class="mt-2" style="max-width: 600px; width: 100%; margin: 0 auto; height: 5px; background: #2EAB4F"></span>
           <div class="ma-auto my-4" style="width:60%;">
             <img :src="product.imageURL" style="width: 100%;">
@@ -33,10 +33,10 @@
           <v-card-title style="background: #3995D8; color: white;">
             ガチャ履歴
             <v-spacer></v-spacer>
-            <v-icon style="color: white;" @click="dialog=false">mdi-close</v-icon>
+            <v-icon color="white" @click="dialog=false">mdi-close</v-icon>
           </v-card-title>
-          <v-card-text style="border-bottom: 2px solid #3995D8; max-height: 60vh; overflow: scroll;">
-            <v-list v-for="p in productHistory" :key="p.name" style="display: grid; grid-template-columns: 4fr 1fr; border-bottom: 1px dashed #3995D8;">
+          <v-card-text class="product__history-items">
+            <v-list v-for="p in productHistory" class="product__history-item" :key="p.name">
               <a :href="p.link" style="color: gray;" target="_blank" rel="noopener">{{p.name}}</a>
               <span align="center">{{p.price}}円</span>
             </v-list>
@@ -99,5 +99,28 @@ export default {
     max-width: 400px;
     font-size: 1.2rem !important;
     font-weight: bold;
+  }
+
+  .product__history {
+    border-bottom: 2px solid #3995D8;
+    max-height: 60vh;
+    overflow: scroll;
+  }
+
+  .product__history-items {
+    border-bottom: 2px solid #3995D8;
+    max-height: 60vh;
+    overflow: scroll;
+    margin-top: 20px;
+  }
+
+  .product__history-item {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    border-bottom: 1px dashed #3995D8 !important;
+  }
+
+  .product__history-item:last-child {
+    border-bottom: none !important;
   }
 </style>
