@@ -32,12 +32,12 @@
 
 ## Getting Started
 ### api
-#### run
+#### 起動
 ```
 $ make api/run
 ```
 
-#### stop
+#### 停止
 ```
 $ make api/stop
 ```
