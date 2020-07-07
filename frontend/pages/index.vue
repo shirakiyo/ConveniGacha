@@ -7,7 +7,7 @@
         <div><input type="radio" v-model="category" value="sweets" class="mr-2"><span style="color: #3995D8;font-weight: bold;">デザート</span></div>
         <div><input type="radio" v-model="category" value="snacks" class="mr-2"><span style="color: #3995D8;font-weight: bold;">お菓子</span></div>
       </div>
-      <v-btn @click="getProduct" color="#2EAB4F" class="pa-8 mt-6 mb-8 ma-auto gacha__btn" style="color: white;">ガチャを回す</v-btn>
+      <v-btn @click="getProduct" color="#2EAB4F" class="mt-6 mb-8 ma-auto gacha__btn" style="color: white;">ガチャを回す</v-btn>
       <v-card v-show="product.name" max-width="800px" style="width: 90vw;">
         <v-card-text class="pa-8 d-flex justify-around flex-column">
           <h2 align="center" style="font-size: 1.2rem; color: black;">{{product.name}}</h2>
@@ -97,11 +97,13 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .gacha__btn {
     max-width: 400px;
     font-size: 1.2rem !important;
     font-weight: bold;
+    display: flex;
+    align-items: center;
   }
 
   .product__history-items {
