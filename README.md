@@ -31,10 +31,15 @@
 
 
 ## Getting Started
-dockerやmakefileで管理する予定ですが作業中なので以下のコマンドで試してみてください。
-### apiの起動方法
+### api
+#### run
 ```
-$ go run cmd/api/main.go
+$ make api/run
+```
+
+#### stop
+```
+$ make api/stop
 ```
 
 ### アプリの起動方法
@@ -49,3 +54,7 @@ $ yarn dev
 ```
 $ go run cmd/task/main.go
 ```
+
+## 使用しているツール
+このアプリを動かすには以下のツールが必要です。
+- docker-compose
