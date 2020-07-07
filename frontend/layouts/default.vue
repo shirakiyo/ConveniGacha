@@ -11,11 +11,11 @@
           <v-btn class="conveni__btn py-6" style="border: 2px solid #0687d1; color: #0687d1; font-weight: bold;"><img class="mr-2" src="../static/lawson_icon.jpg" widht="30" height="30">ガチャ</v-btn>
         </div>
       </header>
-      <v-container class="mb-16" style="">
+      <v-container style="min-height: calc(100vh - 184px);">
         <nuxt />
       </v-container>
       <footer class="conveni__foot">
-        <div class="d-flex justify-space-around my-6 ma-auto" style="max-width: 600px;">
+        <div class="d-flex justify-space-around py-6 ma-auto" style="max-width: 600px;">
           <v-btn class="py-6" style="border: 2px solid #F56500; color: #F56500; font-weight: bold;"><img class="mr-2" src="../static/seven_icon.png" width="30">ガチャ</v-btn>
           <v-btn class="py-6" style="border: 2px solid #0687d1; color: #0687d1; font-weight: bold;"><img class="mr-2" src="../static/lawson_icon.jpg" widht="30" height="30">ガチャ</v-btn>
         </div>
@@ -29,7 +29,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .v-application {
     font-family: 'Noto Sans JP', sans-serif !important;
   }
@@ -40,10 +40,6 @@ export default {
 
   .conveni__foot {
     background: white;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
     height: 100px;
   }
 
