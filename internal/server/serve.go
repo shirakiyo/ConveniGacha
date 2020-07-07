@@ -6,7 +6,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/shirakiyo/ConveniGacha/internal/domain/repository"
+	"github.com/shirakiyo/ConveniGacha/internal/infrastructure/csv"
+
 	"github.com/shirakiyo/ConveniGacha/internal/usecase"
 
 	"github.com/shirakiyo/ConveniGacha/internal/app/handler"
@@ -38,7 +39,7 @@ func Serve(port string) {
 		log.Println(err)
 		os.Exit(1)
 	}
-	repo := repository.NewProductRepository(fp)
+	repo := csv.NewProductRepository(fp)
 	useCase := usecase.NewProductUseCase(repo)
 	productHandler := handler.NewHandler(useCase)
 

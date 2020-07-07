@@ -1,4 +1,4 @@
-package repository
+package csv
 
 import (
 	"encoding/csv"
@@ -8,24 +8,22 @@ import (
 	"path/filepath"
 	"strconv"
 
+	"github.com/shirakiyo/ConveniGacha/internal/domain/repository"
+
 	"github.com/shirakiyo/ConveniGacha/internal/domain/model"
 )
 
-type ProductRepository interface {
-	ListProducts(string) ([]*model.Product, error)
-}
-
-type productsFile struct {
+type productsCSV struct {
 	filePath string
 }
 
-func NewProductRepository(path string) ProductRepository {
-	return &productsFile{
+func NewProductRepository(path string) repository.ProductRepository {
+	return &productsCSV{
 		filePath: path,
 	}
 }
 
-func (pr *productsFile) ListProducts(fileName string) (result []*model.Product, err error) {
+func (pr *productsCSV) ListProducts(fileName string) (result []*model.Product, err error) {
 	result = make([]*model.Product, 0)
 
 	csvFile, err := os.Open(filepath.Join(pr.filePath, fileName))
