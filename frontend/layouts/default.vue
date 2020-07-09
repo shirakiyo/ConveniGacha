@@ -7,8 +7,8 @@
           <div><span style="color: #2EAB4F;">FamilyMart</span><span style="font-size: 2rem;color: #3995D8;">ガチャ</span></div>
         </h1>
         <div class="d-flex">
-          <v-btn class="conveni__btn py-6" style="border: 2px solid #F56500; color: #F56500; font-weight: bold;"><img class="mr-2" src="../static/seven_icon.png" width="30">ガチャ</v-btn>
-          <v-btn class="conveni__btn py-6" style="border: 2px solid #0687d1; color: #0687d1; font-weight: bold;"><img class="mr-2" src="../static/lawson_icon.jpg" widht="30" height="30">ガチャ</v-btn>
+          <v-btn class="conveni__btn button" style="border: 2px solid #F56500; color: #F56500; font-weight: bold;"><img class="mr-2" src="../static/seven_icon.png" width="30">ガチャ</v-btn>
+          <v-btn class="conveni__btn button" style="border: 2px solid #0687d1; color: #0687d1; font-weight: bold;"><img class="mr-2" src="../static/lawson_icon.jpg" widht="30" height="30">ガチャ</v-btn>
         </div>
       </header>
       <v-container style="min-height: calc(100vh - 184px);">
@@ -16,8 +16,8 @@
       </v-container>
       <footer class="conveni__foot">
         <div class="d-flex justify-space-around py-6 ma-auto" style="max-width: 600px;">
-          <v-btn class="py-6" style="border: 2px solid #F56500; color: #F56500; font-weight: bold;"><img class="mr-2" src="../static/seven_icon.png" width="30">ガチャ</v-btn>
-          <v-btn class="py-6" style="border: 2px solid #0687d1; color: #0687d1; font-weight: bold;"><img class="mr-2" src="../static/lawson_icon.jpg" widht="30" height="30">ガチャ</v-btn>
+          <v-btn class="button" style="border: 2px solid #F56500; color: #F56500; font-weight: bold;"><img class="mr-2" src="../static/seven_icon.png" width="30">ガチャ</v-btn>
+          <v-btn class="button" style="border: 2px solid #0687d1; color: #0687d1; font-weight: bold;"><img class="mr-2" src="../static/lawson_icon.jpg" widht="30" height="30">ガチャ</v-btn>
         </div>
       </footer>
     </v-content>
@@ -46,6 +46,11 @@ export default {
   .conveni__btn {
     display: none;
     margin: 0 1rem;
+  }
+
+  .button {
+    padding: 0 24px !important;
+    height: 52px !important;
   }
 
   .conveni__head {

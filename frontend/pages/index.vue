@@ -15,10 +15,12 @@
           <p class="mt-4">{{product.detail}}</p>
           <div class="d-flex flex-column justify-center">
             <h3 align="center">{{product.price}}円(税込)</h3>
-            <a :href="product.link" target="_blank" ref="noopener" class="d-flex align-center justify-center mt-4" color="blue" style="text-decoration: none; color: #2196F3;">
-              ファミマ公式サイトでチェック
-              <v-icon color="blue">mdi-open-in-new</v-icon>
-            </a>
+            <div class="d-flex justify-center">
+              <a :href="product.link" target="_blank" ref="noopener" class="d-inline-flex align-center justify-center mt-4" style="text-decoration: none; color: #2196F3;">
+                ファミマ公式サイトでチェック
+                <v-icon color="blue">mdi-open-in-new</v-icon>
+              </a>
+            </div>
           </div>
         </v-card-text>
       </v-card>
@@ -103,7 +105,9 @@ export default {
     font-size: 1.2rem !important;
     font-weight: bold;
     display: flex;
-    align-items: center;
+    align-items: center !important;
+    padding: 0 32px !important;
+    min-height: 64px;
   }
 
   .product__history-items {
