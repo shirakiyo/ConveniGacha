@@ -7,8 +7,8 @@
           <div><span style="color: #2EAB4F;">FamilyMart</span><span style="font-size: 2rem;color: #3995D8;">ガチャ</span></div>
         </h1>
         <div class="d-flex">
-          <v-btn class="conveni__btn button" style="border: 2px solid #F56500; color: #F56500; font-weight: bold;"><img class="mr-2" src="../static/seven_icon.png" width="30">ガチャ</v-btn>
-          <v-btn class="conveni__btn button" style="border: 2px solid #0687d1; color: #0687d1; font-weight: bold;"><img class="mr-2" src="../static/lawson_icon.jpg" widht="30" height="30">ガチャ</v-btn>
+          <v-btn class="conveni__btn button" style="border: 2px solid #F56500; color: #F56500; font-weight: bold;" disabled><img class="mr-2 image-disabled" src="../static/seven_icon.png" width="30">ガチャ</v-btn>
+          <v-btn class="conveni__btn button" style="border: 2px solid #0687d1; color: #0687d1; font-weight: bold;" disabled><img class="mr-2 image-disabled" src="../static/lawson_icon.jpg" widht="30" height="30">ガチャ</v-btn>
         </div>
       </header>
       <v-container style="min-height: calc(100vh - 184px);">
@@ -16,8 +16,8 @@
       </v-container>
       <footer class="conveni__foot">
         <div class="d-flex justify-space-around py-6 ma-auto" style="max-width: 600px;">
-          <v-btn class="button" style="border: 2px solid #F56500; color: #F56500; font-weight: bold;"><img class="mr-2" src="../static/seven_icon.png" width="30">ガチャ</v-btn>
-          <v-btn class="button" style="border: 2px solid #0687d1; color: #0687d1; font-weight: bold;"><img class="mr-2" src="../static/lawson_icon.jpg" widht="30" height="30">ガチャ</v-btn>
+          <v-btn class="button" style="border: 2px solid #F56500; color: #F56500; font-weight: bold;" disabled><img class="mr-2 image-disabled" src="../static/seven_icon.png" width="30">ガチャ</v-btn>
+          <v-btn class="button" style="border: 2px solid #0687d1; color: #0687d1; font-weight: bold;" disabled><img class="mr-2 image-disabled" src="../static/lawson_icon.jpg" widht="30" height="30">ガチャ</v-btn>
         </div>
       </footer>
     </v-content>
@@ -59,6 +59,11 @@ export default {
     display: grid;
     grid-template-columns: 0 3fr 0;
     align-items: center;
+  }
+
+  .image-disabled {
+    background: rgba(0, 0, 0, 0.12) !important;
+    opacity: 0.3;
   }
 
   @media screen and (min-width: 600px) {
