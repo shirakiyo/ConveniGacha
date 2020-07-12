@@ -7,8 +7,11 @@ api/stop:
 api/build:
 	docker build -t conveni-api -f './cmd/api/Dockerfile' .
 
-task/run:
-	go run cmd/task/main.go
+famima/scrape:
+	@go run cmd/task/main.go --conveni famima
 
-test: 
+lawson/scrape:
+	@go run cmd/task/main.go --conveni lawson
+
+test:
 	@go test -cover ./...

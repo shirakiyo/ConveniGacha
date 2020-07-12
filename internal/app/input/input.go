@@ -10,7 +10,7 @@ type GetProduct struct {
 	Category string
 }
 
-func (i GetProduct) validate() error {
+func (i GetProduct) Validate() error {
 	switch usecase.ProductCategory(i.Category) {
 	case "":
 		return nil

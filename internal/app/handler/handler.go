@@ -12,7 +12,8 @@ import (
 )
 
 type ProductHandler interface {
-	GetProduct(echo.Context) error
+	GetFamimaProduct(echo.Context) error
+	GetLawsonProduct(echo.Context) error
 }
 
 type productHandler struct {
@@ -25,13 +26,38 @@ func NewHandler(pu usecase.ProductUseCase) ProductHandler {
 	}
 }
 
-func (h *productHandler) GetProduct(c echo.Context) error {
+func (h *productHandler) GetFamimaProduct(c echo.Context) error {
 	var param input.GetProduct
 	if err := c.Bind(&param); err != nil {
 		return APIResponseError(c, http.StatusBadRequest, "Bad Request", err)
 	}
+	if err := param.Validate(); err != nil {
+		return APIResponseError(c, http.StatusBadRequest, "Bad Request", err)
+	}
 
-	product, err := h.productUseCase.GetProduct(usecase.ProductCategory(param.Category))
+	product, err := h.productUseCase.GetFamimaProduct(usecase.ProductCategory(param.Category))
+	if err != nil {
+		return APIResponseError(c, http.StatusInternalServerError, "Internal Server Error", err)
+	}
+
+	return APIResponseOK(c, output.Product{
+		Name:   product.Name,
+		Price:  product.Price,
+		Link:   product.Link,
+		Detail: product.Detail,
+	})
+}
+
+func (h *productHandler) GetLawsonProduct(c echo.Context) error {
+	var param input.GetProduct
+	if err := c.Bind(&param); err != nil {
+		return APIResponseError(c, http.StatusBadRequest, "Bad Request", err)
+	}
+	if err := param.Validate(); err != nil {
+		return APIResponseError(c, http.StatusBadRequest, "Bad Request", err)
+	}
+
+	product, err := h.productUseCase.GetLawsonProduct(usecase.ProductCategory(param.Category))
 	if err != nil {
 		return APIResponseError(c, http.StatusInternalServerError, "Internal Server Error", err)
 	}

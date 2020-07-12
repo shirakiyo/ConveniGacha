@@ -23,6 +23,11 @@ const (
 	FamimaFoodsCSV    = "famima_foods.csv"
 	FamimaSweetsCSV   = "famima_sweets.csv"
 	FamimaSnacksCSV   = "famima_snacks.csv"
+
+	LawsonProductsCSV = "lawson_products.csv"
+	LawsonFoodsCSV    = "lawson_foods.csv"
+	LawsonSweetsCSV   = "lawson_sweets.csv"
+	LawsonSnacksCSV   = "lawson_snacks.csv"
 )
 
 var (
@@ -30,7 +35,8 @@ var (
 )
 
 type ProductUseCase interface {
-	GetProduct(ProductCategory) (*model.Product, error)
+	GetFamimaProduct(ProductCategory) (*model.Product, error)
+	GetLawsonProduct(ProductCategory) (*model.Product, error)
 }
 
 type productUseCase struct {
@@ -44,7 +50,7 @@ func NewProductUseCase(pr repository.ProductRepository) ProductUseCase {
 }
 
 // GetProduct 全商品の中からランダムで商品を選択する
-func (pu *productUseCase) GetProduct(category ProductCategory) (*model.Product, error) {
+func (pu *productUseCase) GetFamimaProduct(category ProductCategory) (*model.Product, error) {
 	var fileName string
 
 	switch category {
@@ -56,6 +62,31 @@ func (pu *productUseCase) GetProduct(category ProductCategory) (*model.Product, 
 		fileName = FamimaSweetsCSV
 	case SnacksPrefix:
 		fileName = FamimaSnacksCSV
+	default:
+		return nil, ErrInvalidCategory
+	}
+
+	products, err := pu.productRepository.ListProducts(fileName)
+	if err != nil {
+		return nil, err
+	}
+	index := rand.Int() % len(products)
+
+	return products[index], nil
+}
+
+func (pu *productUseCase) GetLawsonProduct(category ProductCategory) (*model.Product, error) {
+	var fileName string
+
+	switch category {
+	case "":
+		fileName = LawsonProductsCSV
+	case FoodsPrefix:
+		fileName = LawsonFoodsCSV
+	case SweetsPrefix:
+		fileName = LawsonSweetsCSV
+	case SnacksPrefix:
+		fileName = LawsonSnacksCSV
 	default:
 		return nil, ErrInvalidCategory
 	}
